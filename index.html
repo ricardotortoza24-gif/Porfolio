@@ -1,0 +1,1899 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ricardo Tortoza | Diseñador Gráfico & 3D</title>
+
+    <!-- =====================================================
+         FUENTES
+    ====================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <!-- =====================================================
+         THREE.JS
+    ====================================================== -->
+
+    <script type="importmap">
+
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+    }
+
+    </script>
+
+
+    <!-- =====================================================
+         CSS
+    ====================================================== -->
+
+    <style>
+
+        /* =====================================================
+           VARIABLES
+        ====================================================== */
+
+        :root {
+
+            --black: #080808;
+            --dark: #101010;
+
+            --gold: #c9a45c;
+            --gold-light: #e6cc91;
+
+            --white: #f4f0e8;
+            --gray: #aaa49b;
+
+        }
+
+
+        /* =====================================================
+           RESET
+        ====================================================== */
+
+        * {
+
+            margin: 0;
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+        html {
+
+            scroll-behavior: smooth;
+
+        }
+
+
+        body {
+
+            background: var(--black);
+
+            color: var(--white);
+
+            font-family: "Montserrat", sans-serif;
+
+            overflow-x: hidden;
+
+        }
+
+
+        a {
+
+            color: inherit;
+
+            text-decoration: none;
+
+        }
+
+
+        section {
+
+            min-height: 100vh;
+
+            padding: 120px 8%;
+
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ====================================================== */
+
+        .navbar {
+
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            height: 80px;
+
+            padding: 0 7%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            background: rgba(8, 8, 8, .90);
+
+            border-bottom: 1px solid rgba(201, 164, 92, .35);
+
+            backdrop-filter: blur(12px);
+
+            z-index: 1000;
+
+            transition: .4s;
+
+        }
+
+
+        .logo {
+
+            font-family: "Cinzel", serif;
+
+            font-size: 25px;
+
+            letter-spacing: 5px;
+
+            color: var(--gold);
+
+        }
+
+
+        .logo span {
+
+            color: var(--white);
+
+        }
+
+
+        .navbar nav {
+
+            display: flex;
+
+            gap: 35px;
+
+        }
+
+
+        .navbar nav a {
+
+            font-size: 10px;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+
+            transition: .3s;
+
+        }
+
+
+        .navbar nav a:hover {
+
+            color: var(--gold);
+
+        }
+
+
+        /* =====================================================
+           ART DECO DECORATION
+        ====================================================== */
+
+        .deco-line {
+
+            width: 110px;
+
+            height: 1px;
+
+            background: var(--gold);
+
+            margin: 25px auto;
+
+            position: relative;
+
+        }
+
+
+        .deco-line::before,
+        .deco-line::after {
+
+            content: "";
+
+            position: absolute;
+
+            top: -4px;
+
+            width: 8px;
+
+            height: 8px;
+
+            border: 1px solid var(--gold);
+
+            transform: rotate(45deg);
+
+        }
+
+
+        .deco-line::before {
+
+            left: -15px;
+
+        }
+
+
+        .deco-line::after {
+
+            right: -15px;
+
+        }
+
+
+        /* =====================================================
+           HERO
+        ====================================================== */
+
+        .hero {
+
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+            position: relative;
+
+            overflow: hidden;
+
+            background:
+
+                radial-gradient(
+                    circle at center,
+                    rgba(201, 164, 92, .08),
+                    transparent 45%
+                );
+
+        }
+
+
+        .hero-content {
+
+            max-width: 900px;
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        .hero small {
+
+            color: var(--gold);
+
+            font-size: 11px;
+
+            letter-spacing: 5px;
+
+            text-transform: uppercase;
+
+        }
+
+
+        .hero h1 {
+
+            font-family: "Cinzel", serif;
+
+            font-weight: 500;
+
+            font-size: clamp(50px, 9vw, 110px);
+
+            letter-spacing: 8px;
+
+            line-height: 1.05;
+
+            margin: 25px 0;
+
+        }
+
+
+        .hero h2 {
+
+            font-size: 14px;
+
+            font-weight: 300;
+
+            letter-spacing: 5px;
+
+            color: var(--gray);
+
+            text-transform: uppercase;
+
+        }
+
+
+        .hero p {
+
+            max-width: 650px;
+
+            margin: 30px auto;
+
+            color: var(--gray);
+
+            line-height: 1.8;
+
+            font-size: 14px;
+
+        }
+
+
+        /* =====================================================
+           ART DECO FORMAS HERO
+        ====================================================== */
+
+        .deco-shape {
+
+            position: absolute;
+
+            width: 220px;
+
+            height: 220px;
+
+            border: 1px solid rgba(201, 164, 92, .35);
+
+            transform: rotate(45deg);
+
+        }
+
+
+        .shape-left {
+
+            left: 3%;
+
+            top: 35%;
+
+        }
+
+
+        .shape-right {
+
+            right: 3%;
+
+            bottom: 25%;
+
+        }
+
+
+        /* =====================================================
+           BOTÓN
+        ====================================================== */
+
+        .btn {
+
+            display: inline-block;
+
+            padding: 15px 38px;
+
+            border: 1px solid var(--gold);
+
+            color: var(--gold);
+
+            font-size: 10px;
+
+            letter-spacing: 3px;
+
+            text-transform: uppercase;
+
+            transition: .35s;
+
+        }
+
+
+        .btn:hover {
+
+            background: var(--gold);
+
+            color: var(--black);
+
+            box-shadow: 0 0 25px rgba(201, 164, 92, .2);
+
+        }
+
+
+        /* =====================================================
+           TITULOS
+        ====================================================== */
+
+        .section-title {
+
+            font-family: "Cinzel", serif;
+
+            font-size: 42px;
+
+            font-weight: 500;
+
+            letter-spacing: 5px;
+
+            text-align: center;
+
+        }
+
+
+        .section-subtitle {
+
+            text-align: center;
+
+            color: var(--gray);
+
+            font-size: 12px;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        /* =====================================================
+           SOBRE MI
+        ====================================================== */
+
+        .about {
+
+            background: var(--dark);
+
+        }
+
+
+        .about-container {
+
+            max-width: 1050px;
+
+            margin: 70px auto;
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 70px;
+
+            align-items: center;
+
+        }
+
+
+        .about-text p {
+
+            color: var(--gray);
+
+            font-size: 14px;
+
+            line-height: 1.9;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .skills {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 15px;
+
+        }
+
+
+        .skill {
+
+            padding: 30px 20px;
+
+            border: 1px solid rgba(201, 164, 92, .3);
+
+            text-align: center;
+
+            transition: .3s;
+
+        }
+
+
+        .skill:hover {
+
+            transform: translateY(-6px);
+
+            border-color: var(--gold);
+
+        }
+
+
+        .skill h3 {
+
+            font-family: "Cinzel", serif;
+
+            font-size: 15px;
+
+            color: var(--gold);
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .skill p {
+
+            font-size: 10px;
+
+            color: var(--gray);
+
+        }
+
+
+        /* =====================================================
+           PROYECTOS
+        ====================================================== */
+
+        .projects {
+
+            background: var(--black);
+
+        }
+
+
+        .project-grid {
+
+            max-width: 1200px;
+
+            margin: 70px auto;
+
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 25px;
+
+        }
+
+
+        .project {
+
+            height: 350px;
+
+            position: relative;
+
+            overflow: hidden;
+
+            border: 1px solid rgba(201, 164, 92, .3);
+
+            background: #171717;
+
+        }
+
+
+        .project img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            transition: .6s;
+
+        }
+
+
+        .project:hover img {
+
+            transform: scale(1.08);
+
+        }
+
+
+        .project-info {
+
+            position: absolute;
+
+            left: 0;
+
+            bottom: 0;
+
+            width: 100%;
+
+            padding: 30px;
+
+            background: linear-gradient(
+                transparent,
+                rgba(0,0,0,.95)
+            );
+
+        }
+
+
+        .project-info h3 {
+
+            font-family: "Cinzel", serif;
+
+            color: var(--gold-light);
+
+            font-size: 20px;
+
+            margin-bottom: 5px;
+
+        }
+
+
+        .project-info p {
+
+            font-size: 10px;
+
+            color: #ddd;
+
+            letter-spacing: 1px;
+
+        }
+
+
+        /* =====================================================
+           SERVICIOS
+        ====================================================== */
+
+        .services {
+
+            background: var(--dark);
+
+            position: relative;
+
+            overflow: hidden;
+
+        }
+
+
+        /* =====================================================
+           MODELO 3D COMO FONDO DE SERVICIOS
+        ====================================================== */
+
+        #modelo3d {
+
+            position: absolute;
+
+            inset: 0;
+
+            width: 100%;
+
+            height: 100%;
+
+            z-index: 0;
+
+            pointer-events: none;
+
+        }
+
+
+        #modelo3d canvas {
+
+            display: block;
+
+            width: 100% !important;
+
+            height: 100% !important;
+
+        }
+
+
+        .services > .reveal,
+        .services-grid {
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        /* =====================================================
+           GRID SERVICIOS
+        ====================================================== */
+
+        .services-grid {
+
+            max-width: 1100px;
+
+            margin: 0 auto;
+
+            display: grid;
+
+            grid-template-columns: repeat(4, 1fr);
+
+            gap: 20px;
+
+        }
+
+
+        .service {
+
+            padding: 40px 20px;
+
+            text-align: center;
+
+            border: 1px solid rgba(201, 164, 92, .3);
+
+            transition: .3s;
+
+        }
+
+
+        .service:hover {
+
+            transform: translateY(-8px);
+
+            border-color: var(--gold);
+
+            background: rgba(201, 164, 92, .04);
+
+        }
+
+
+        .service-number {
+
+            font-family: "Cinzel", serif;
+
+            color: var(--gold);
+
+            font-size: 30px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .service h3 {
+
+            font-family: "Cinzel", serif;
+
+            font-size: 16px;
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .service p {
+
+            color: var(--gray);
+
+            font-size: 11px;
+
+            line-height: 1.7;
+
+        }
+
+
+        /* =====================================================
+           CONTACTO
+        ====================================================== */
+
+        .contact {
+
+            min-height: 70vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            text-align: center;
+
+        }
+
+
+        .contact-content {
+
+            max-width: 700px;
+
+        }
+
+
+        .contact p {
+
+            color: var(--gray);
+
+            line-height: 1.8;
+
+            margin: 25px 0 35px;
+
+        }
+
+
+        .contact-info {
+
+            margin-top: 30px;
+
+            color: var(--gold);
+
+            font-size: 12px;
+
+            line-height: 2;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        /* =====================================================
+           FOOTER
+        ====================================================== */
+
+        footer {
+
+            padding: 30px;
+
+            text-align: center;
+
+            border-top: 1px solid rgba(201, 164, 92, .3);
+
+            color: var(--gray);
+
+            font-size: 9px;
+
+            letter-spacing: 2px;
+
+        }
+
+
+        /* =====================================================
+           ANIMACIONES
+        ====================================================== */
+
+        .reveal {
+
+            opacity: 0;
+
+            transform: translateY(30px);
+
+            transition: 1s ease;
+
+        }
+
+
+        .reveal.active {
+
+            opacity: 1;
+
+            transform: translateY(0);
+
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ====================================================== */
+
+        @media (max-width: 900px) {
+
+            .navbar nav {
+
+                gap: 15px;
+
+            }
+
+
+            .about-container {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .project-grid {
+
+                grid-template-columns: 1fr 1fr;
+
+            }
+
+
+            .services-grid {
+
+                grid-template-columns: 1fr 1fr;
+
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .navbar {
+
+                padding: 0 20px;
+
+            }
+
+
+            .navbar nav {
+
+                display: none;
+
+            }
+
+
+            section {
+
+                padding: 100px 20px;
+
+            }
+
+
+            .hero h1 {
+
+                font-size: 45px;
+
+                letter-spacing: 4px;
+
+            }
+
+
+            .hero h2 {
+
+                font-size: 11px;
+
+                letter-spacing: 3px;
+
+            }
+
+
+            .project-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .services-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+            .deco-shape {
+
+                display: none;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================== -->
+
+<header class="navbar">
+
+    <div class="logo">
+        RT<span>.</span>
+    </div>
+
+    <nav>
+
+        <a href="#inicio">Inicio</a>
+
+        <a href="#sobre-mi">Sobre mí</a>
+
+        <a href="#proyectos">Proyectos</a>
+
+        <a href="#servicios">Servicios</a>
+
+        <a href="#contacto">Contacto</a>
+
+    </nav>
+
+</header>
+
+
+
+<!-- =========================================================
+     HERO
+========================================================== -->
+
+<section class="hero" id="inicio">
+
+
+    <div class="deco-shape shape-left"></div>
+
+    <div class="deco-shape shape-right"></div>
+
+
+    <div class="hero-content reveal">
+
+        <small>
+            Diseño · Arte · 3D
+        </small>
+
+
+        <h1>
+            RICARDO<br>
+            TORTOZA
+        </h1>
+
+
+        <div class="deco-line"></div>
+
+
+        <h2>
+            Diseñador Gráfico &amp; Artista 3D
+        </h2>
+
+
+        <p>
+            Diseño gráfico, publicidad, branding,
+            ilustración, modelado 3D y comunicación visual.
+        </p>
+
+
+        <a
+            href="#proyectos"
+            class="btn"
+        >
+            Ver proyectos
+        </a>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SOBRE MÍ
+========================================================== -->
+
+<section
+    class="about"
+    id="sobre-mi"
+>
+
+    <div class="reveal">
+
+        <h2 class="section-title">
+            SOBRE MÍ
+        </h2>
+
+
+        <div class="deco-line"></div>
+
+
+        <p class="section-subtitle">
+            Creatividad · Técnica · Comunicación Visual
+        </p>
+
+    </div>
+
+
+    <div class="about-container reveal">
+
+
+        <div class="about-text">
+
+            <p>
+                Soy Diseñador Gráfico y Técnico Superior
+                en Animación 2D y 3D para Videojuegos
+                y Entornos Interactivos, con más de
+                6 años de experiencia.
+            </p>
+
+
+            <p>
+                Estoy especializado en Publicidad y
+                Comunicación Visual, combinando creatividad
+                y conocimientos técnicos.
+            </p>
+
+
+            <p>
+                Mi experiencia abarca branding,
+                diseño publicitario, ilustración digital,
+                modelado 3D, visualización, rotulación
+                y producción gráfica.
+            </p>
+
+        </div>
+
+
+        <div class="skills">
+
+
+            <div class="skill">
+
+                <h3>
+                    Branding
+                </h3>
+
+                <p>
+                    Identidad visual
+                </p>
+
+            </div>
+
+
+            <div class="skill">
+
+                <h3>
+                    Diseño
+                </h3>
+
+                <p>
+                    Publicidad y comunicación
+                </p>
+
+            </div>
+
+
+            <div class="skill">
+
+                <h3>
+                    3D
+                </h3>
+
+                <p>
+                    Modelado y visualización
+                </p>
+
+            </div>
+
+
+            <div class="skill">
+
+                <h3>
+                    Illustration
+                </h3>
+
+                <p>
+                    Arte digital y concept art
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     PROYECTOS
+========================================================== -->
+
+<section
+    class="projects"
+    id="proyectos"
+>
+
+
+    <div class="reveal">
+
+        <h2 class="section-title">
+            PROYECTOS
+        </h2>
+
+
+        <div class="deco-line"></div>
+
+
+        <p class="section-subtitle">
+            Una selección de trabajos
+        </p>
+
+    </div>
+
+
+
+    <div class="project-grid reveal">
+
+
+        <div class="project">
+
+            <img
+                src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=900&q=80"
+                alt="Branding"
+            >
+
+            <div class="project-info">
+
+                <h3>
+                    Branding
+                </h3>
+
+                <p>
+                    Identidad visual
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="project">
+
+            <img
+                src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=900&q=80"
+                alt="Diseño gráfico"
+            >
+
+            <div class="project-info">
+
+                <h3>
+                    Publicidad
+                </h3>
+
+                <p>
+                    Diseño y dirección visual
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="project">
+
+            <img
+                src="https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?auto=format&fit=crop&w=900&q=80"
+                alt="3D Art"
+            >
+
+            <div class="project-info">
+
+                <h3>
+                    3D Art
+                </h3>
+
+                <p>
+                    Modelado y visualización
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="project">
+
+            <img
+                src="https://images.unsplash.com/photo-1634986666676-ec8fd927c23d?auto=format&fit=crop&w=900&q=80"
+                alt="Ilustración"
+            >
+
+            <div class="project-info">
+
+                <h3>
+                    Illustration
+                </h3>
+
+                <p>
+                    Arte digital
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="project">
+
+            <img
+                src="https://images.unsplash.com/photo-1609921212029-bb5a28e60960?auto=format&fit=crop&w=900&q=80"
+                alt="Campaña"
+            >
+
+            <div class="project-info">
+
+                <h3>
+                    Campaign
+                </h3>
+
+                <p>
+                    Comunicación visual
+                </p>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="project">
+
+            <img
+                src="https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?auto=format&fit=crop&w=900&q=80"
+                alt="Concept Art"
+            >
+
+            <div class="project-info">
+
+                <h3>
+                    Concept Art
+                </h3>
+
+                <p>
+                    Personajes y escenarios
+                </p>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     SERVICIOS
+========================================================== -->
+
+<section
+    class="services"
+    id="servicios"
+>
+
+
+    <!-- MODELO 3D DE FONDO -->
+    <div id="modelo3d"></div>
+
+
+    <div class="reveal">
+
+        <h2 class="section-title">
+            SERVICIOS
+        </h2>
+
+
+        <div class="deco-line"></div>
+
+
+        <p class="section-subtitle">
+            Creatividad aplicada a diferentes medios
+        </p>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         SERVICIOS
+    ====================================================== -->
+
+    <div class="services-grid reveal">
+
+
+        <div class="service">
+
+            <div class="service-number">
+                01
+            </div>
+
+            <h3>
+                Diseño Gráfico
+            </h3>
+
+            <p>
+                Diseño publicitario, cartelería,
+                composición y artes finales.
+            </p>
+
+        </div>
+
+
+
+        <div class="service">
+
+            <div class="service-number">
+                02
+            </div>
+
+            <h3>
+                Branding
+            </h3>
+
+            <p>
+                Creación de identidades visuales
+                y sistemas gráficos.
+            </p>
+
+        </div>
+
+
+
+        <div class="service">
+
+            <div class="service-number">
+                03
+            </div>
+
+            <h3>
+                3D
+            </h3>
+
+            <p>
+                Modelado, materiales,
+                iluminación y visualización.
+            </p>
+
+        </div>
+
+
+
+        <div class="service">
+
+            <div class="service-number">
+                04
+            </div>
+
+            <h3>
+                Ilustración
+            </h3>
+
+            <p>
+                Ilustración digital, concept art,
+                personajes y escenarios.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     CONTACTO
+========================================================== -->
+
+<section
+    class="contact"
+    id="contacto"
+>
+
+
+    <div class="contact-content reveal">
+
+
+        <h2 class="section-title">
+            HABLEMOS
+        </h2>
+
+
+        <div class="deco-line"></div>
+
+
+        <p>
+            ¿Tienes un proyecto en mente?
+            Estoy disponible para nuevos proyectos
+            y oportunidades profesionales.
+        </p>
+
+
+        <a
+            href="mailto:Ricardotortoza@gmail.com"
+            class="btn"
+        >
+            Contactar
+        </a>
+
+
+        <div class="contact-info">
+
+            638 971 402
+
+            <br>
+
+            Ricardotortoza@gmail.com
+
+            <br>
+
+            Madrid · Guadarrama
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================================
+     FOOTER
+========================================================== -->
+
+<footer>
+
+    © 2026 RICARDO TORTOZA · DISEÑO &amp; 3D
+
+</footer>
+
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================== -->
+
+<script type="module">
+
+import * as THREE from "three";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+
+
+/* =========================================================
+   THREE.JS · MODELO 3D DE FONDO EN SERVICIOS
+========================================================= */
+
+const container = document.getElementById("modelo3d");
+const servicesSection = document.getElementById("servicios");
+
+const scene = new THREE.Scene();
+
+const camera = new THREE.PerspectiveCamera(
+    35,
+    1,
+    0.1,
+    1000
+);
+
+camera.position.set(0, 0, 8);
+
+
+const renderer = new THREE.WebGLRenderer({
+    antialias: true,
+    alpha: true
+});
+
+renderer.setPixelRatio(
+    Math.min(window.devicePixelRatio, 2)
+);
+
+renderer.outputColorSpace = THREE.SRGBColorSpace;
+renderer.setClearColor(0x000000, 0);
+
+container.appendChild(renderer.domElement);
+
+
+/* =========================================================
+   ILUMINACIÓN
+========================================================= */
+
+scene.add(
+    new THREE.HemisphereLight(
+        0xffffff,
+        0x222222,
+        2.2
+    )
+);
+
+const keyLight = new THREE.DirectionalLight(
+    0xffffff,
+    3
+);
+
+keyLight.position.set(4, 6, 6);
+scene.add(keyLight);
+
+
+const goldLight = new THREE.DirectionalLight(
+    0xc9a45c,
+    2.2
+);
+
+goldLight.position.set(-4, 2, -3);
+scene.add(goldLight);
+
+
+/* =========================================================
+   CARGAR MODELO
+========================================================= */
+
+const loader = new GLTFLoader();
+
+let modelo = null;
+let rotacionObjetivo = 0;
+
+loader.load(
+    "./models/modelo.glb",
+
+    function(gltf) {
+
+        modelo = gltf.scene;
+
+        /*
+         * Centrado automático del modelo.
+         * Así no importa demasiado cómo esté situado
+         * o escalado originalmente en Blender.
+         */
+        const box = new THREE.Box3().setFromObject(modelo);
+        const center = box.getCenter(new THREE.Vector3());
+        const size = box.getSize(new THREE.Vector3());
+
+        modelo.position.sub(center);
+
+        const maxDimension = Math.max(
+            size.x,
+            size.y,
+            size.z
+        );
+
+        if (maxDimension > 0) {
+
+            const escala = 3.4 / maxDimension;
+
+            modelo.scale.setScalar(escala);
+
+        }
+
+        /*
+         * Ligero desplazamiento hacia abajo para
+         * dejar respirar el título de Servicios.
+         */
+        modelo.position.y -= 0.25;
+
+        scene.add(modelo);
+
+        console.log("GLB cargado correctamente.");
+
+    },
+
+    function(xhr) {
+
+        if (xhr.total) {
+
+            console.log(
+                "Modelo:",
+                Math.round(xhr.loaded / xhr.total * 100) + "%"
+            );
+
+        }
+
+    },
+
+    function(error) {
+
+        console.error(
+            "Error cargando models/modelo.glb:",
+            error
+        );
+
+    }
+);
+
+
+/* =========================================================
+   TAMAÑO DEL RENDERER
+========================================================= */
+
+function resizeRenderer() {
+
+    const width = Math.max(
+        container.clientWidth,
+        1
+    );
+
+    const height = Math.max(
+        container.clientHeight,
+        1
+    );
+
+    renderer.setSize(
+        width,
+        height,
+        false
+    );
+
+    camera.aspect =
+        width / height;
+
+    camera.updateProjectionMatrix();
+
+}
+
+resizeRenderer();
+
+window.addEventListener(
+    "resize",
+    resizeRenderer
+);
+
+
+/* =========================================================
+   ROTACIÓN VINCULADA AL SCROLL
+========================================================= */
+
+function updateScrollRotation() {
+
+    if (!modelo)
+        return;
+
+    const rect =
+        servicesSection.getBoundingClientRect();
+
+    /*
+     * Progreso estable del scroll:
+     * 0 cuando Servicios entra por abajo,
+     * 1 cuando termina de salir por arriba.
+     */
+    const recorrido =
+        window.innerHeight + rect.height;
+
+    const progreso =
+        THREE.MathUtils.clamp(
+            (window.innerHeight - rect.top) / recorrido,
+            0,
+            1
+        );
+
+    /*
+     * Dos vueltas completas a lo largo
+     * de toda la sección Servicios.
+     */
+    rotacionObjetivo =
+        progreso *
+        Math.PI *
+        4;
+
+}
+
+window.addEventListener(
+    "scroll",
+    updateScrollRotation,
+    { passive: true }
+);
+
+updateScrollRotation();
+
+
+/* =========================================================
+   ANIMACIÓN
+========================================================= */
+
+function animate() {
+
+    requestAnimationFrame(animate);
+
+    if (modelo) {
+
+        /*
+         * Suavizado/inercia.
+         */
+        modelo.rotation.y +=
+            (
+                rotacionObjetivo -
+                modelo.rotation.y
+            ) * 0.075;
+
+    }
+
+    renderer.render(
+        scene,
+        camera
+    );
+
+}
+
+animate();
+
+
+/* =========================================================
+   REVEAL AL HACER SCROLL
+========================================================= */
+
+const reveals =
+    document.querySelectorAll(".reveal");
+
+function revealOnScroll() {
+
+    reveals.forEach(
+        function(element) {
+
+            const elementTop =
+                element.getBoundingClientRect().top;
+
+            if (
+                elementTop <
+                window.innerHeight - 120
+            ) {
+
+                element.classList.add("active");
+
+            }
+
+        }
+    );
+
+}
+
+window.addEventListener(
+    "scroll",
+    revealOnScroll,
+    { passive: true }
+);
+
+revealOnScroll();
+
+
+/* =========================================================
+   NAVBAR AL HACER SCROLL
+========================================================= */
+
+const navbar =
+    document.querySelector(".navbar");
+
+window.addEventListener(
+    "scroll",
+    function() {
+
+        if (window.scrollY > 50) {
+
+            navbar.style.background =
+                "rgba(5,5,5,.98)";
+
+        } else {
+
+            navbar.style.background =
+                "rgba(8,8,8,.90)";
+
+        }
+
+    },
+    { passive: true }
+);
+
+</script>
+
+
+</body>
+
+</html>
+```
